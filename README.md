@@ -12,7 +12,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.70 |
+| <a name="provider_azurerm"></a> [aws](#provider\_azurerm) | >= 2.54.0 |
 
 ## Usage:
 ~~~
