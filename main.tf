@@ -42,10 +42,10 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
 
 
   service_principal {
-    client_id = var.backend_client_id
+    client_id     = var.backend_client_id
     client_secret = var.backend_client_secret
   }
-  
+
   linux_profile {
     admin_username = "azureuser"
     ssh_key {
@@ -66,7 +66,7 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
     aci_connector_linux {
       enabled = false
     }
-  
+
 
     azure_policy {
       enabled = false
@@ -74,12 +74,12 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
 
     http_application_routing {
       enabled = false
-    } 
-  
+    }
+
     kube_dashboard {
       enabled = false
     }
-  
+
     oms_agent {
       enabled = false
     }

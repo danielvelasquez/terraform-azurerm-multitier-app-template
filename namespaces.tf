@@ -47,7 +47,7 @@ resource "kubernetes_namespace" "prod" {
 
 resource "kubernetes_limit_range" "dev-lr" {
   metadata {
-    name = "cpu-limit-range"
+    name      = "cpu-limit-range"
     namespace = kubernetes_namespace.dev.metadata[0].name
   }
   spec {
@@ -57,7 +57,7 @@ resource "kubernetes_limit_range" "dev-lr" {
         storage = "2Gi"
       }
       min = {
-        storage    = "1Gi"
+        storage = "1Gi"
       }
     }
     limit {
@@ -67,7 +67,7 @@ resource "kubernetes_limit_range" "dev-lr" {
         memory = "512Mi"
       }
       default_request = {
-        cpu = "0.25"
+        cpu    = "0.25"
         memory = "256Mi"
       }
       max = {
@@ -83,7 +83,7 @@ resource "kubernetes_limit_range" "dev-lr" {
 }
 resource "kubernetes_limit_range" "uat-lr" {
   metadata {
-    name = "cpu-limit-range"
+    name      = "cpu-limit-range"
     namespace = kubernetes_namespace.uat.metadata[0].name
   }
   spec {
@@ -93,7 +93,7 @@ resource "kubernetes_limit_range" "uat-lr" {
         storage = "4Gi"
       }
       min = {
-        storage    = "1Gi"
+        storage = "1Gi"
       }
     }
     limit {
@@ -103,7 +103,7 @@ resource "kubernetes_limit_range" "uat-lr" {
         memory = "512Mi"
       }
       default_request = {
-        cpu = "0.25"
+        cpu    = "0.25"
         memory = "256Mi"
       }
       max = {
@@ -119,7 +119,7 @@ resource "kubernetes_limit_range" "uat-lr" {
 }
 resource "kubernetes_limit_range" "prod-lr" {
   metadata {
-    name = "cpu-limit-range"
+    name      = "cpu-limit-range"
     namespace = kubernetes_namespace.prod.metadata[0].name
   }
   spec {
@@ -129,7 +129,7 @@ resource "kubernetes_limit_range" "prod-lr" {
         storage = "6Gi"
       }
       min = {
-        storage    = "1Gi"
+        storage = "1Gi"
       }
     }
     limit {
@@ -139,7 +139,7 @@ resource "kubernetes_limit_range" "prod-lr" {
         memory = "512Mi"
       }
       default_request = {
-        cpu = "0.25"
+        cpu    = "0.25"
         memory = "256Mi"
       }
       max = {
@@ -159,11 +159,11 @@ resource "kubernetes_resource_quota" "dev-rq" {
   }
   spec {
     hard = {
-      "requests.cpu"           = "1"
-      "requests.memory"        = "1Gi"
-      "limits.cpu"             = "1"
-      "limits.memory"          = "2Gi"
-      "requests.storage"       = "10Gi"
+      "requests.cpu"     = "1"
+      "requests.memory"  = "1Gi"
+      "limits.cpu"       = "1"
+      "limits.memory"    = "2Gi"
+      "requests.storage" = "10Gi"
     }
   }
 }
@@ -173,11 +173,11 @@ resource "kubernetes_resource_quota" "uat-rq" {
   }
   spec {
     hard = {
-      "requests.cpu"           = "2"
-      "requests.memory"        = "2Gi"
-      "limits.cpu"             = "4"
-      "limits.memory"          = "4Gi"
-      "requests.storage"       = "15Gi"
+      "requests.cpu"     = "2"
+      "requests.memory"  = "2Gi"
+      "limits.cpu"       = "4"
+      "limits.memory"    = "4Gi"
+      "requests.storage" = "15Gi"
     }
   }
 }
@@ -187,11 +187,11 @@ resource "kubernetes_resource_quota" "prod-rq" {
   }
   spec {
     hard = {
-      "requests.cpu"           = "4"
-      "requests.memory"        = "4Gi"
-      "limits.cpu"             = "8"
-      "limits.memory"          = "6Gi"
-      "requests.storage"       = "20Gi"
+      "requests.cpu"     = "4"
+      "requests.memory"  = "4Gi"
+      "limits.cpu"       = "8"
+      "limits.memory"    = "6Gi"
+      "requests.storage" = "20Gi"
     }
   }
 }

@@ -8,12 +8,12 @@ resource "azurerm_cosmosdb_account" "db" {
   enable_automatic_failover = false
 
   consistency_policy {
-    consistency_level       = "Session"
-   
+    consistency_level = "Session"
+
   }
   capabilities {
     name = "EnableMongo"
- }
+  }
 
   geo_location {
     location          = var.location
@@ -34,7 +34,7 @@ resource "kubernetes_secret" "db_secret" {
     namespace = var.environment
   }
   data = {
-    "appinsights" = azurerm_application_insights.app-insights.instrumentation_key 
+    "appinsights" = azurerm_application_insights.app-insights.instrumentation_key
     "pwd"         = azurerm_cosmosdb_account.db.primary_key
     "user"        = azurerm_cosmosdb_account.db.name
   }

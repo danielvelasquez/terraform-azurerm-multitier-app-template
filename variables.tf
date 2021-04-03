@@ -15,21 +15,21 @@ variable "tenant_id" {
 }
 
 variable "location" {
- type         = string
+  type        = string
   default     = "westeurope"
   description = "Location for provisioned resources"
 }
 
 variable "kubernetes_version" {
-  default = "1.19.6"
+  default     = "1.19.6"
   description = "TKubernetes version used for aks cluster"
 }
 
-variable "backend_ssh_key" {  
+variable "backend_ssh_key" {
   description = "ssh key to authenticate to backend"
 }
 
-variable resource_group_name {
+variable "resource_group_name" {
   description = "Name of the resource group to be created for each consuming project"
 }
 
