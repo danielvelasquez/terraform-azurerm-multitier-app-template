@@ -34,7 +34,7 @@ func TestTerraformAzureAKSLEO(t *testing.T) {
 
 
 	terraformOptions := &terraform.Options{
-		TerraformDir: "/template",
+		TerraformDir: "../",
 		Vars: map[string]interface{}{
 			"resource_group_name":     expectedResourceGroupName,
 			"backend_client_id":       backendClientId,
