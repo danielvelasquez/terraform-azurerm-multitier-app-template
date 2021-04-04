@@ -1,3 +1,3 @@
 include:
-    - 'https://gitlab.com/danielrvelasquez/pipelines/raw/master/.ci-pipeline-skeleton.yml'
+    - 'https://gitlab.com/danielrvelasquez/pipelines/raw/master/.ci-pipeline-template.yml'
     - 'https://gitlab.com/danielrvelasquez/pipelines/raw/master/.ci-template-multitier-app.yml'
