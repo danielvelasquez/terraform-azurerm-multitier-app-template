@@ -19,7 +19,7 @@ func TestTerraformAzureAKSLEO(t *testing.T) {
 	backendClientId := os.Getenv("BACKEND_CLIENT_ID")
 	backendClientSecret := os.Getenv("BACKEND_CLIENT_SECRET")
 	tenantID := os.Getenv("TENANT_ID")
-	subscriptionID := os.Getenv("SUBSCRIPTION")
+	subscriptionID := os.Getenv("ARM_SUBSCRIPTION_ID")
 	backendSSHKey := os.Getenv("BACKEND_SSH_KEY")
 	environment := os.Getenv("ENV")
 	dbName := os.Getenv("DB_NAME")
