@@ -24,7 +24,13 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
   resource_group_name = azurerm_resource_group.aks-rg.name
   dns_prefix          = var.prefix
   kubernetes_version  = var.kubernetes_version
-
+  
+  role_based_access_control {
+		enabled = false
+	}
+  api_server_authorized_ip_ranges = [
+		"64.0.0.0/16"
+	]
   default_node_pool {
     name                = "default"
     node_count          = 2
@@ -81,7 +87,7 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
     }
 
     oms_agent {
-      enabled = false
+      enabled = true
     }
   }
 }
