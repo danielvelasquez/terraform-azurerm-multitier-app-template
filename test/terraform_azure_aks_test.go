@@ -36,9 +36,7 @@ func TestTerraformAzureAKSLEO(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		TerraformDir: "/template/terraform-azurerm-multitier-app-template",
 		Vars: map[string]interface{}{
-			//"cluster_name":            expectedClusterName,
 			"resource_group_name":     expectedResourceGroupName,
-			//"agent_count":             expectedAagentCount,
 			"backend_client_id":       backendClientId,
 			"backend_client_secret":   backendClientSecret,
 			"tenant_id":               tenantID,
