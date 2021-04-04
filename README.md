@@ -63,6 +63,9 @@ terraform init \
           -backend-config client_secret=<Backend Client Secret>
 ~~~
 
+## Access Management Considerations
+
+Provisioning of azure key-vault for top level secrets is out of scope for this assignment, instead all credentials and secrets to access the subscription are stored as CI/CD masked variables which means they won't be accidentally printed in console logs on GitLab and only project Maintainers have access to them, for secrets inside the cluster like database credentials and app insights a kubernetes secret resource is provisioned in the module.
 ## Module Release Pipeline
 
 This module is tested and released using GitLab CI mirroring repo: 

@@ -87,7 +87,7 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
     }
 
     oms_agent {
-      enabled = true
+      enabled = false
     }
   }
 }
