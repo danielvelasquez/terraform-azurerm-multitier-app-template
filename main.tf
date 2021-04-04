@@ -26,7 +26,7 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
   kubernetes_version  = var.kubernetes_version
   
   role_based_access_control {
-		enabled = false
+		enabled = true
 	}
   api_server_authorized_ip_ranges = [
 		"64.0.0.0/16"
