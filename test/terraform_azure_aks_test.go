@@ -23,7 +23,7 @@ func TestTerraformAzureAKSLEO(t *testing.T) {
 	backendSSHKey := os.Getenv("BACKEND_SSH_KEY")
 	environment := os.Getenv("ENV")
 	dbName := os.Getenv("DB_NAME")
-	expectedAagentCount := 3
+	expectedAagentCount := 2
     // Enable and provide the following variables to test backend config with http backend
 
 	//projectId := "terratest-aks-cluster"
