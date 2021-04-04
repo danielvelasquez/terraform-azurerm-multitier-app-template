@@ -1,6 +1,9 @@
 # tf-azure-multitier-app-template
 # 3-tier Application infrastructuretemplate module
 
+## Architecture Overview
+
+![Alt text](AKS%20Architecture.png?raw=true "AKS Architecture Overview")
 ## Requirements
 
 | Name | Version |
