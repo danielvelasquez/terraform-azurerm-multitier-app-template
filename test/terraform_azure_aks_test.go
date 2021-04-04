@@ -14,7 +14,7 @@ import (
 
 func TestTerraformAzureAKSLEO(t *testing.T) {
 	t.Parallel()
-	expectedClusterName := fmt.Sprintf("terratest-aks-cluster-%s", random.UniqueId())
+	expectedClusterName := "leo-aks-cluster"
 	expectedResourceGroupName := fmt.Sprintf("terratest-aks-rg-%s", random.UniqueId())
 	backendClientId := os.Getenv("BACKEND_CLIENT_ID")
 	backendClientSecret := os.Getenv("BACKEND_CLIENT_SECRET")
