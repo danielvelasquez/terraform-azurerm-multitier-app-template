@@ -79,6 +79,14 @@ Available in Terraform  Registry:
 
 https://registry.terraform.io/modules/danielvelasquez/backend-config/azurerm/latest
 
+Alternatively, the backend can be configured to an http endpoint, for GitLab projects gitlab provides an easy configuration to store the terraform state files:
+
+https://docs.gitlab.com/ee/user/infrastructure/
+
+The following project uses this module to provision the infrastructure in aks and uses GitLab as the http backend:
+
+https://gitlab.com/danielrvelasquez/sample-app/
+
 ## Access Management Considerations
 
 Provisioning of azure key-vault for top level secrets is out of scope for this assignment, instead all credentials and secrets to access the subscription are stored as CI/CD masked variables which means they won't be accidentally printed in console logs on GitLab and only project Maintainers have access to them, for secrets inside the cluster like database credentials and app insights a kubernetes secret resource is provisioned in the module.
