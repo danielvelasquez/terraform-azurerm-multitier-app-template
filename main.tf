@@ -18,6 +18,7 @@ resource "azurerm_subnet" "leo-sn" {
 }
 
 
+#tfsec:ignore:AZU008
 resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
   name                = "${var.prefix}-aks-cluster"
   location            = azurerm_resource_group.aks-rg.location
@@ -28,9 +29,7 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
   role_based_access_control {
 		enabled = true
 	}
-  api_server_authorized_ip_ranges = [
-		"64.0.0.0/16"
-	]
+
   default_node_pool {
     name                = "default"
     node_count          = 2
