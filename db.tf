@@ -39,6 +39,9 @@ resource "kubernetes_secret" "db_secret" {
     "user"        = azurerm_cosmosdb_account.db.name
   }
   depends_on = [
-    azurerm_kubernetes_cluster.aks-leo-cluster,
+    azurerm_kubernetes_cluster.aks-leo-cluster, 
+    kubernetes_limit_range.dev-lr, 
+    kubernetes_limit_range.uat-lr, 
+    kubernetes_limit_range.prod-lr 
   ]
 }

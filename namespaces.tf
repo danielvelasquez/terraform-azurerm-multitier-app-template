@@ -1,8 +1,3 @@
-#resource "kubernetes_namespace" "load-balancer" {
-#  metadata {
-#    name = var.namespace
-#  }
-#}
 resource "kubernetes_namespace" "dev" {
   metadata {
     annotations = {
