@@ -87,6 +87,7 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
     }
 
     oms_agent {
+      #tfsec:ignore:AZU009
       enabled = false
     }
   }
