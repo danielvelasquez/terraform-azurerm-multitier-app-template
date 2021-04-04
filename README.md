@@ -32,3 +32,43 @@ module "cluster" {
 }
 
 ~~~
+
+
+## Considerations
+
+To increase reliability at scale it is recommended to use a remote backend independent from the provisioning system, this can be done by adding the following blosk to the main terraform file consuming the module:
+
+~~~
+
+terraform {
+    backend "azurerm" {
+
+    }
+}
+
+~~~
+
+In conjunction the backend configuration values need to be passed to the terraform init command:
+
+~~~
+terraform init \
+          -reconfigure \
+          -backend-config resource_group_name=<Storage account resource group name> \ 
+          -backend-config storage_account_name=<Storage account name> \
+          -backend-config container_name=<container name> \
+          -backend-config key=<Backend config key> \
+          -backend-config subscription_id=<Subscription Id> \
+          -backend-config tenant_id=<Tenant Id> \
+          -backend-config client_id=<Backend Client ID (SP)> \
+          -backend-config client_secret=<Backend Client Secret>
+~~~
+
+## Module Release Pipeline
+
+This module is tested and released using GitLab CI mirroring repo: 
+
+https://gitlab.com/danielrvelasquez/terraform-azurerm-multitier-app-template
+
+Pipeline Code:
+
+https://gitlab.com/danielrvelasquez/pipelines
