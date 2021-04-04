@@ -23,7 +23,7 @@ resource "azurerm_cosmosdb_account" "db" {
 
 resource "azurerm_cosmosdb_mongo_database" "mongo-db" {
   name                = "leo-cosmos-mongo-db"
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.aks-rg.name
   account_name        = azurerm_cosmosdb_account.db.name
   throughput          = 400
 }
