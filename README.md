@@ -41,7 +41,6 @@ module "cluster" {
 
 ~~~
 
-
 ## Considerations
 
 To increase reliability at scale it is recommended to use a remote backend independent from the provisioning system, this can be done by adding the following blosk to the main terraform file consuming the module:
@@ -90,7 +89,6 @@ https://gitlab.com/danielrvelasquez/sample-app/
 ## AKS Cluster Scalability
 
 The aks cluster provisioned is set to be auto-scalable but it also has limits configured based on namespaces, meaning environments for different stages even within the same cluster will scale up to the limits given by the stage namespace, currently the namespaces provided are dev, uat and prod, the namespaces can also be provisioned and configured dynamically to allow multiple namespaces for the same application in the same stage (multiple dev or uat environments). 
-
 ## Access Management Considerations
 
 Provisioning of azure key-vault for top level secrets is out of scope for this assignment, instead all credentials and secrets to access the subscription are stored as CI/CD masked variables which means they won't be accidentally printed in console logs on GitLab and only project Maintainers have access to them, for secrets inside the cluster like database credentials and app insights a kubernetes secret resource is provisioned in the module.
@@ -113,11 +111,9 @@ The module project contains a .gitlab-ci.yml file which references the template 
 Each job is executed in a docker container with all the necessary tools (f.ex go, terraform cli, azure cli, git, curl, etc...). This enhances reliability and reusability in the CI/CD pipeline, furthermore some easy enhancements can be made in order to provide a string with values for variables as a CI/CD variable in gitlab to make this pipeline work for any terraform module.
 
 Notes on Performance: The pipeline performance can further be improved by caching modules, paralelizing steps and improving the images used but performance tunning is out of the scope for this assignment. 
-
 ## Pipeline reliability
 
 The release pipeline deploys and tests the module using Terratest and TFSec, Terratest provisions the infrastructure, performs assertions and proceed to destroy the resources created. The provisioning happens on a free trial Microsoft Azure account which limits the amount of nodes so that only one cluster can exist at the time, therefore if the reference app has been deployed the dynamic tests for the module will fail and a new release won't be made until Terraform can successfully apply the changes and pass the dynamic tests.
-
 ## Reference Application
 
 The Following Application is deployed by implementing the terraform module to provision the kubernetes cluster on aks and installing a set of helm charts. The pipeline has not been made generic nor takes into account multiple namespaces for different stages but it exemplifies how it all ties together in order to make use of the module:
