@@ -90,6 +90,8 @@ https://gitlab.com/danielrvelasquez/sample-app/
 ## Access Management Considerations
 
 Provisioning of azure key-vault for top level secrets is out of scope for this assignment, instead all credentials and secrets to access the subscription are stored as CI/CD masked variables which means they won't be accidentally printed in console logs on GitLab and only project Maintainers have access to them, for secrets inside the cluster like database credentials and app insights a kubernetes secret resource is provisioned in the module.
+
+Currently a named space is used on GitLab.com for the mirroring repositories but they can be put in a group so that default access variables can be shared and RBAC finely implemented at both group and project level
 ## Module Release Pipeline
 
 This module is tested and released using GitLab CI mirroring repo: 
@@ -100,8 +102,30 @@ Pipeline Code:
 
 https://gitlab.com/danielrvelasquez/pipelines
 
-The pipelines are declared in a separate repo so maximize usability, the pipelines repo contains a template for common stages across projects and technologies and implementation pipelines that define how each type should be released.
+The pipelines are declared in a separate repository to maximize usability. The pipelines repo contains a template for common stages across projects and technologies and implementation pipelines that define how each type should be released. 
 
 The module project contains a .gitlab-ci.yml file which references the template pipeline and the specific multitier application infrastructure provisioning pipeline.
 
 Each job is executed in a docker container with all the necessary tools (f.ex go, terraform cli, azure cli, git, curl, etc...). This enhances reliability and reusability in the CI/CD pipeline, furthermore some easy enhancements can be made in order to provide a string with values for variables as a CI/CD variable in gitlab to make this pipeline work for any terraform module.
+
+Notes on Performance: The pipeline performance can further be improved by caching modules, paralelizing steps and improving the images used but performance tunning is out of the scope for this assignment. 
+
+## Reference Application
+
+The Following Application is deployed by implementing the terraform module to provision the kubernetes cluster on aks and installing a set of helm charts. The pipeline has not been made generic nor takes into account multiple namespaces for different stages but it exemplifies how it all ties together in order to make use of the module:
+
+https://gitlab.com/danielrvelasquez/sample-app
+
+Pipeline code:
+
+Infrastructure provisioning
+
+https://gitlab.com/danielrvelasquez/pipelines/-/blob/master/.ci-terraform-multitier-app.yml
+
+Application Deployment
+
+https://gitlab.com/danielrvelasquez/pipelines/-/blob/master/.ci-aks-multilayer-app.yml
+
+Next steps:
+
+The deployment pipeline can be further extended to use the namespaces and declare jobs to deploy on different environments per stage, add an approval flow to work with the branching strategy, add automated tests and find helm charts instead of expliscitly declaring them in the deployment job, so that it can be used for any multilayer app and not just the reference one but those improvements are out of the scope for this assignment.
