@@ -86,6 +86,17 @@ The following project uses this module to provision the infrastructure in aks an
 
 https://gitlab.com/danielrvelasquez/sample-app/
 
+## Local Development
+
+Since the cluster is provisioned as a Kubernetes cluster it can easily be replicated locally using minikube deploying applications with helm charts.
+
+Development workstation requirements:
+
+Kubernetes + Docker
+Helm
+
+
+The reference application mentioned a few sections below illustrates how the application can be set up for ease of deployment using helm charts.
 ## AKS Cluster Scalability
 
 The aks cluster provisioned is set to be auto-scalable but it also has limits configured based on namespaces, meaning environments for different stages even within the same cluster will scale up to the limits given by the stage namespace, currently the namespaces provided are dev, uat and prod, the namespaces can also be provisioned and configured dynamically to allow multiple namespaces for the same application in the same stage (multiple dev or uat environments). 
